@@ -14,6 +14,8 @@ jobs:
           run: sudo apt-get install cowsay -y
         - name: executing cowsay
           run: cowsay -f dragon "run" >> op.txt
+        - name: list files
+          run: ls -lrta
         - name: sleep for 20 sec
           run: sleep 20
 
@@ -21,6 +23,8 @@ jobs:
         runs-on: ubuntu-latest
         needs: build_job
         steps:
+        - name: list files
+          run: ls -lrta
         - name: sleep for 20 sec
           run: sleep 10
         - name: test files
