@@ -3,19 +3,29 @@ name: generate ASCII artwork
 on: push
 
 jobs:
-    ascii_ob:
+    build_job:
         runs-on: ubuntu-latest
         steps:
         - name: checkout
           uses: actions/checkout@v6
         - name: list files
           run: ls -lrta
-        - name: executing shell script
-          run: |
-            chmod +x script.sh
-            ./script.sh
+        - name: installing cowsay
+          run: sudo apt-get install cowsay -y
+        - name: executing cowsay
+          run: cowsay -f dragon "run" >> op.txt
+        - name: sleep for 20 sec
+          run: sleep 20
 
-        # - name: list files
-        #   run: ls
-        # - name: read files
-        #   run: cat README.md
+    test_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: sleep for 20 sec
+          run: sleep 10
+        - name: test files
+          run: grep -i "dragon" op.txt   
+    deploy_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: print file
+          run: cat op.txt
