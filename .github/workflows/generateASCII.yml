@@ -18,13 +18,20 @@ jobs:
           run: ls -lrta
         - name: sleep for 20 sec
           run: sleep 20
-
+        - name: upload artifacts
+          uses: actions/upload-artifact@v7
+          with:
+            name: upload dragon text file
+            path: op.txt
     test_job:
         runs-on: ubuntu-latest
         needs: build_job
         steps:
-        - name: list files
-          run: ls -lrta
+        - name: download artifacts
+          uses: actions/download-artifact@v8
+          with:
+            name: download dragon file
+            path: op.txt
         - name: sleep for 20 sec
           run: sleep 10
         - name: test files
@@ -33,5 +40,10 @@ jobs:
         runs-on: ubuntu-latest
         needs: test_job
         steps:
+        - name: download artifacts
+          uses: actions/download-artifact@v8
+          with:
+            name: download dragon file
+            path: op.txt
         - name: print file
           run: cat op.txt
