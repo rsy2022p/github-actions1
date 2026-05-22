@@ -36,7 +36,7 @@ jobs:
         - name: sleep for 1 sec
           run: sleep 1
         - name: test files
-          run: grep -i "dragon" op.txt   
+          run: grep -i "run" op.txt   
     deploy_job:
         runs-on: ubuntu-latest
         needs: test_job
