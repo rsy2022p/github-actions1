@@ -8,9 +8,14 @@ jobs:
         steps:
         - name: checkout
           uses: actions/checkout@v6
-        - name: welcome message
-          run: echo "my first githubactions job"
-        - name: list files
-          run: ls
-        - name: read files
-          run: cat README.md
+        - name: list and view file
+          run: |
+            echo "my first githubactions job"
+            ls -lrta
+            cat README.md
+        - name: Generate ASCII
+          run: cowsay -f dragon " run " >> op.txt
+        # - name: list files
+        #   run: ls
+        # - name: read files
+        #   run: cat README.md
