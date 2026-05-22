@@ -29,10 +29,9 @@ jobs:
         needs: build_job
         steps:
         - name: download artifacts
-          uses: actions/download-artifact@v8
+          uses: actions/download-artifact@v7
           with:
             name: download dragon file
-            path: op.txt
         - name: sleep for 20 sec
           run: sleep 10
         - name: test files
@@ -42,9 +41,8 @@ jobs:
         needs: test_job
         steps:
         - name: download artifacts
-          uses: actions/download-artifact@v8
+          uses: actions/download-artifact@v7
           with:
             name: download dragon file
-            path: op.txt
         - name: print file
           run: cat op.txt
