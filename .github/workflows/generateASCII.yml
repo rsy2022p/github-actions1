@@ -1,0 +1,23 @@
+name: generate ASCII artwork
+
+on: push
+
+jobs:
+    ascii_ob:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout
+          uses: actions/checkout@v6
+        - name: install cowsay program
+          run: sudo apt install cowsay -y
+        - name: list and view file
+          run: |
+            echo "my first githubactions job"
+            ls -lrta
+            cat README.md
+        - name: Generate ASCII
+          run: cowsay -f dragon " run " >> op.txt
+        # - name: list files
+        #   run: ls
+        # - name: read files
+        #   run: cat README.md
