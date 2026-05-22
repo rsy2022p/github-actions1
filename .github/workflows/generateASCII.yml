@@ -21,7 +21,7 @@ jobs:
         - name: upload artifacts
           uses: actions/upload-artifact@v7
           with:
-            name: upload dragon text file
+            name: download dragon file
             path: op.txt
     test_job:
         runs-on: ubuntu-latest
