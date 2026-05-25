@@ -1,0 +1,12 @@
+name: running on self josted runner
+on:
+  workflow_dispatch
+
+jobs:
+  testing:
+    runs-on: [prod]
+    steps:
+      - name: echo content
+        run: |
+          echo ok
+          sleep 2s
